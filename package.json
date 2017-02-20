@@ -1,12 +1,14 @@
 {
-  "name": "react-social",
-  "version": "1.7.1",
-  "description": "React social buttons and counts for Facebook, Pinterest, Google etc ...",
-  "main": "react-social.js",
+  "name": "react-social-kr",
+  "version": "1.0.0",
+  "description": "React social buttons and counts for Facebook, Pinterest, Google, Naver, KaKao etc ...",
+  "main": "lib/react-social.js",
   "peerDependencies": {
     "react": ">=0.13.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
     "beefy": "~2.1.1",
     "browserify": "~8.1.1",
     "jquery": "^2.2.3",
@@ -16,12 +18,14 @@
     "tape-run": "^2.1.3"
   },
   "scripts": {
+    "build": "babel src --presets babel-preset-es2015 --out-dir lib",
+    "prepublish": "npm run build",
     "dev": "beefy dev.js --live",
     "test": "browserify test.js | tape-run"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/olahol/react-social"
+    "url": "git+https://github.com/olahol/react-social.git"
   },
   "keywords": [
     "react",
@@ -36,11 +40,15 @@
     "browser",
     "react-component"
   ],
-  "author": "Ola Holmström",
+  "author": "Dongwoo Gim <gimdongwoo@gmail.com> (https://github.com/gimdongwoo)",
   "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/olahol/react-social/issues"
   },
-  "homepage": "https://github.com/olahol/react-social"
+  "homepage": "https://github.com/olahol/react-social",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {}
 }

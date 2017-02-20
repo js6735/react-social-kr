@@ -1,7 +1,7 @@
 {
   "name": "react-social",
   "main": [
-    "react-social.js"
+    "lib/react-social.js"
   ],
   "version": "1.7.1",
   "homepage": "https://github.com/olahol/react-social",

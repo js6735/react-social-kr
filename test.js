@@ -1,6 +1,6 @@
 var React = require("react");
 var ReactDom = require("react-dom");
-var ReactSocial = require("./react-social");
+var ReactSocial = require("./lib/react-social");
 var test = require("tape");
 var $ = require("jquery");
 

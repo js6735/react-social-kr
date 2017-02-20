@@ -1,23 +1,21 @@
-# react-social
+# react-social-kr
 
-[![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Dependency Status][dep-image]][dep-url]
-[![Download Count][downloads-image]][downloads-url]
+[![npm version](https://badge.fury.io/js/react-social-kr.svg)](https://badge.fury.io/js/react-social-kr)
 
 > Simple [React](http://facebook.github.io/react/index.html) components for
 > social (Facebook, Google, VKontakte, Pinterest ...) buttons and counts.
+> Plus, Korea's SNS supports (Naver Blog, KaKaoTalk, KaKaoStory ...)
 
 ## Install
 
 ```bash
-npm install react-social --save
+npm install react-social-kr --save
 ```
 
 ## Example
 
 ```javascript
-import { FacebookButton, FacebookCount } from "react-social";
+import { FacebookButton, FacebookCount } from "react-social-kr";
 
 class App extends Component {
   render {
@@ -89,6 +87,9 @@ Return the social count.
 -  XingButton
 -  TumblrButton
 -  PocketButton
+-  NaverBlogButton
+-  KaKaoStoryButton
+-  KaKaoTalkButton
 
 ### Props
 
@@ -116,6 +117,7 @@ Pass options to `window.open`.
 - TumblrButton
 - PocketButton
 - PinterestButton (required)
+- KaKaoTalkButton
 
 A message that's prepended before the url.
 
@@ -141,6 +143,12 @@ Dialog which has more options, but supports only sharing to user's
 feed. You can set `sharer` option to `true` and we'll show Share Dialog
 where user can choose between their feed and also pages they have
 access to.
+
+##### jsKey
+
+- KaKaoTalkButton (required)
+
+KaKaoTalk JavaScript api key.
 
 ## Styles
 
