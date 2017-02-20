@@ -4,7 +4,7 @@
 
 > Simple [React](http://facebook.github.io/react/index.html) components for
 > social (Facebook, Google, VKontakte, Pinterest ...) buttons and counts.
-> Plus, Korean SNS supports (Naver Blog, KaKaoTalk, KaKaoStory ...)
+> Plus, Korean SNS supports (Naver Blog, KaKao Talk, KaKao Story ...)
 
 > Original Source from [react-social](https://github.com/olahol/react-social). Thanks to Ola Holmström and all contributors.
 
@@ -19,14 +19,18 @@ npm install react-social-kr --save
 ```javascript
 import { FacebookButton, FacebookCount } from "react-social-kr";
 
+@connect(
+  (state, ownProps) => ({
+    pathname: ownProps.location.pathname
+  }), {})
 class App extends Component {
   render {
-    let url = "https://github.com";
+    const { pathname } = this.props;
 
     return (
-      <FacebookButton url={url} appId={appId}>
-        <FacebookCount url={url} />
-        {" Share " + url}
+      <FacebookButton pathname={pathname} appId={appId}>
+        <FacebookCount pathname={pathname} />
+        {" Share " + pathname}
       </FacebookButton>
     );
   }
@@ -56,9 +60,9 @@ to make a PR**
 
 Change the element the component renders into, default is `span`.
 
-##### url
+##### pathname
 
-The url you want to get the count of, default is `window.location`.
+The pathname you want to get the count of, default is `window.location`.
 
 ##### token
 
@@ -99,9 +103,9 @@ Return the social count.
 
 Change the element the component renders into, default is `button`.
 
-##### url
+##### pathname
 
-The url you want to share, default is `window.location`.
+The pathname you want to share, default is `window.location`.
 
 ##### target
 
