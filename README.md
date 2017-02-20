@@ -6,6 +6,8 @@
 > social (Facebook, Google, VKontakte, Pinterest ...) buttons and counts.
 > Plus, Korean SNS supports (Naver Blog, KaKaoTalk, KaKaoStory ...)
 
+> Original Source from [react-social](https://github.com/olahol/react-social). Thanks to Ola Holmström
+
 ## Install
 
 ```bash
