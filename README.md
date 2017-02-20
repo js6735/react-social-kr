@@ -4,7 +4,7 @@
 
 > Simple [React](http://facebook.github.io/react/index.html) components for
 > social (Facebook, Google, VKontakte, Pinterest ...) buttons and counts.
-> Plus, Korea's SNS supports (Naver Blog, KaKaoTalk, KaKaoStory ...)
+> Plus, Korean SNS supports (Naver Blog, KaKaoTalk, KaKaoStory ...)
 
 ## Install
 
