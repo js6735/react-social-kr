@@ -127,6 +127,14 @@ Pass options to `window.open`.
 
 A message that's prepended before the url.
 
+##### title
+
+- VKButton
+- RedditButton
+- LinkedInButton
+
+Title of your shared content.
+
 ##### media
 
 - PinterestButton (required)
@@ -186,6 +194,9 @@ them yourself.
 * Alexey Balmasov (@balmasich)
 * Amitom (@Amitom)
 * Ryan Nevius (@rnevius)
+* David Lakata (@dlakata)
+* Roman Kosovichev (@roma-so)
+* Igor Pnev (@exdeniz)
 
 
 ---

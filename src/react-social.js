@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 
 function factory() {
   const isBrowser = () => {
@@ -25,7 +27,7 @@ function factory() {
 
   const jsonp = (url, cb) => {
     let called = false;
-    const now = + new Date();
+    const now = new Date();
     const id = now + '_' + Math.floor(Math.random() * 1000);
 
     const script = document.createElement('script');
@@ -101,7 +103,7 @@ function factory() {
       return {
         element: 'span',
         pathname: '',
-        getLocation: getLocation,
+        getLocation,
         onCount: () => { },
         token: ''
       };
@@ -133,7 +135,7 @@ function factory() {
 
       if (typeof this.fetchCount === 'function') {
         return this.fetchCount((count) => {
-          this.setState({ count: count });
+          this.setState({ count });
         });
       }
 
@@ -142,7 +144,7 @@ function factory() {
       jsonp(url, (err, data) => {
         if (err) {
           console.warn('react-social: jsonp timeout for url ' + url);
-          return this.setState({count: 0});
+          return this.setState({ count: 0 });
         }
 
         this.setState({
@@ -183,7 +185,7 @@ function factory() {
       return {
         element: 'a',
         pathname: '',
-        getLocation: getLocation,
+        getLocation,
         media: '',
         message: '',
         onClick: () => { },
@@ -206,19 +208,19 @@ function factory() {
 
       return React.createElement(
         this.props.element,
-        Object.assign({ 'onClick': this.click }, other)
+        Object.assign({ onClick: this.click }, other)
       );
     }
   };
 
   const DefaultBlankTarget = {
     getDefaultProps: function getDefaultProps() {
-      return {target: '_blank'};
+      return { target: '_blank' };
     }
   };
 
   /* Counts */
-  exports.FacebookCount = React.createClass({
+  exports.FacebookCount = createReactClass({
     displayName: 'FacebookCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -228,9 +230,9 @@ function factory() {
     constructUrl: function constructUrl() {
       let url = '';
       if (!this.props.token) {
-        url = "https://graph.facebook.com/?callback=@&id=" + encodeURIComponent(this.props.getLocation(this.props.pathname));
+        url = 'https://graph.facebook.com/?callback=@&id=' + encodeURIComponent(this.props.getLocation(this.props.pathname));
       } else {
-        url = "https://graph.facebook.com/v2.8/?callback=@" + "&id=" + encodeURIComponent(this.props.getLocation(this.props.pathname)) + "&access_token=" + encodeURIComponent(this.props.token);
+        url = 'https://graph.facebook.com/v2.8/?callback=@&id=' + encodeURIComponent(this.props.getLocation(this.props.pathname)) + '&access_token=' + encodeURIComponent(this.props.token);
       }
 
       return url;
@@ -244,7 +246,7 @@ function factory() {
     }
   });
 
-  exports.TwitterCount = React.createClass({
+  exports.TwitterCount = createReactClass({
     displayName: 'TwitterCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -259,7 +261,7 @@ function factory() {
     }
   });
 
-  exports.GooglePlusCount = React.createClass({
+  exports.GooglePlusCount = createReactClass({
     displayName: 'GooglePlusCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -274,7 +276,7 @@ function factory() {
     }
   });
 
-  exports.PinterestCount = React.createClass({
+  exports.PinterestCount = createReactClass({
     displayName: 'PinterestCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -290,7 +292,7 @@ function factory() {
     }
   });
 
-  exports.LinkedInCount = React.createClass({
+  exports.LinkedInCount = createReactClass({
     displayName: 'LinkedInCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -305,7 +307,7 @@ function factory() {
     }
   });
 
-  exports.RedditCount = React.createClass({
+  exports.RedditCount = createReactClass({
     displayName: 'RedditCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -327,7 +329,7 @@ function factory() {
     }
   });
 
-  exports.VKontakteCount = React.createClass({
+  exports.VKontakteCount = createReactClass({
     displayName: 'VKontakteCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -342,7 +344,7 @@ function factory() {
     }
   });
 
-  exports.TumblrCount = React.createClass({
+  exports.TumblrCount = createReactClass({
     displayName: 'TumblrCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -358,7 +360,7 @@ function factory() {
     }
   });
 
-  exports.PocketCount = React.createClass({
+  exports.PocketCount = createReactClass({
     displayName: 'PocketCount',
     propTypes: {
       pathname: PropTypes.string,
@@ -374,7 +376,7 @@ function factory() {
   });
 
   /* Buttons */
-  exports.FacebookButton = React.createClass({
+  exports.FacebookButton = createReactClass({
     displayName: 'FacebookButton',
     propTypes: {
       appId: PropTypes.oneOfType([
@@ -389,23 +391,23 @@ function factory() {
     mixins: [Button, DefaultBlankTarget],
     constructUrl: function constructUrl() {
       if (this.props.sharer) {
-        return "https://www.facebook.com/dialog/share?"
-             + "app_id=" + encodeURIComponent(this.props.appId)
-             + "&display=popup&caption=" + encodeURIComponent(this.props.message)
-             + "&href=" + encodeURIComponent(this.props.getLocation(this.props.pathname))
-             + "&redirect_uri=" + encodeURIComponent("https://www.facebook.com/");
+        return 'https://www.facebook.com/dialog/share?'
+             + 'app_id=' + encodeURIComponent(this.props.appId)
+             + '&display=popup&caption=' + encodeURIComponent(this.props.message)
+             + '&href=' + encodeURIComponent(this.props.getLocation(this.props.pathname))
+             + '&redirect_uri=' + encodeURIComponent('https://www.facebook.com/');
       }
 
-      return "https://www.facebook.com/dialog/feed?"
-             + "app_id=" + encodeURIComponent(this.props.appId)
-             + "&display=popup&caption=" + encodeURIComponent(this.props.message)
-             + "&link=" + encodeURIComponent(this.props.getLocation(this.props.pathname))
-             + "&picture=" + encodeURIComponent(this.props.media)
-             + "&redirect_uri=" + encodeURIComponent("https://www.facebook.com/");
+      return 'https://www.facebook.com/dialog/feed?'
+             + 'app_id=' + encodeURIComponent(this.props.appId)
+             + '&display=popup&caption=' + encodeURIComponent(this.props.message)
+             + '&link=' + encodeURIComponent(this.props.getLocation(this.props.pathname))
+             + '&picture=' + encodeURIComponent(this.props.media)
+             + '&redirect_uri=' + encodeURIComponent('https://www.facebook.com/');
     }
   });
 
-  exports.TwitterButton = React.createClass({
+  exports.TwitterButton = createReactClass({
     displayName: 'TwitterButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -420,7 +422,7 @@ function factory() {
     }
   });
 
-  exports.EmailButton = React.createClass({
+  exports.EmailButton = createReactClass({
     displayName: 'EmailButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -428,15 +430,12 @@ function factory() {
       message: PropTypes.string
     },
     mixins: [Button],
-    getDefaultProps: function getDefaultProps() {
-      return {target: '_self'};
-    },
     constructUrl: function constructUrl() {
       return 'mailto:?subject=' + encodeURIComponent(this.props.message) + '&body=' + encodeURIComponent(this.props.getLocation(this.props.pathname));
     }
   });
 
-  exports.PinterestButton = React.createClass({
+  exports.PinterestButton = createReactClass({
     displayName: 'PinterestButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -454,7 +453,7 @@ function factory() {
     }
   });
 
-  exports.VKontakteButton = React.createClass({
+  exports.VKontakteButton = createReactClass({
     displayName: 'VKontakteButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -462,11 +461,13 @@ function factory() {
     },
     mixins: [Button, DefaultBlankTarget],
     constructUrl: function constructUrl() {
-      return 'http://vk.com/share.php?url=' + encodeURIComponent(this.props.getLocation(this.props.pathname));
+      return 'http://vk.com/share.php?url=' + encodeURIComponent(this.props.getLocation(this.props.pathname))
+        + '&title=' + encodeURIComponent(this.props.title)
+        + '&description=' + encodeURIComponent(this.props.message);
     }
   });
 
-  exports.GooglePlusButton = React.createClass({
+  exports.GooglePlusButton = createReactClass({
     displayName: 'GooglePlusButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -478,7 +479,7 @@ function factory() {
     }
   });
 
-  exports.RedditButton = React.createClass({
+  exports.RedditButton = createReactClass({
     displayName: 'RedditButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -486,11 +487,12 @@ function factory() {
     },
     mixins: [Button, DefaultBlankTarget],
     constructUrl: function constructUrl() {
-      return 'https://www.reddit.com/submit?url=' + encodeURIComponent(this.props.getLocation(this.props.pathname));
+      return 'https://www.reddit.com/submit?url=' + encodeURIComponent(this.props.getLocation(this.props.pathname))
+        + '&title=' + encodeURIComponent(this.props.title);
     }
   });
 
-  exports.LinkedInButton = React.createClass({
+  exports.LinkedInButton = createReactClass({
     displayName: 'LinkedInButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -498,11 +500,12 @@ function factory() {
     },
     mixins: [Button, DefaultBlankTarget],
     constructUrl: function constructUrl() {
-      return 'https://www.linkedin.com/shareArticle?url=' + encodeURIComponent(this.props.getLocation(this.props.pathname));
+      return 'https://www.linkedin.com/shareArticle?url=' + encodeURIComponent(this.props.getLocation(this.props.pathname))
+        + '&title=' + encodeURIComponent(this.props.title);
     }
   });
 
-  exports.XingButton = React.createClass({
+  exports.XingButton = createReactClass({
     displayName: 'XingButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -515,7 +518,7 @@ function factory() {
     }
   });
 
-  exports.TumblrButton = React.createClass({
+  exports.TumblrButton = createReactClass({
     displayName: 'TumblrButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -528,7 +531,7 @@ function factory() {
     }
   });
 
-  exports.PocketButton = React.createClass({
+  exports.PocketButton = createReactClass({
     displayName: 'PocketButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -541,7 +544,7 @@ function factory() {
     }
   });
 
-  exports.NaverBlogButton = React.createClass({
+  exports.NaverBlogButton = createReactClass({
     displayName: 'NaverBlogButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -553,7 +556,7 @@ function factory() {
     }
   });
 
-  exports.KaKaoStoryButton = React.createClass({
+  exports.KaKaoStoryButton = createReactClass({
     displayName: 'KaKaoStoryButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -565,7 +568,7 @@ function factory() {
     }
   });
 
-  exports.KaKaoTalkButton = React.createClass({
+  exports.KaKaoTalkButton = createReactClass({
     displayName: 'KaKaoTalkButton',
     propTypes: {
       pathname: PropTypes.string,
@@ -574,17 +577,17 @@ function factory() {
       id: PropTypes.string,
       jsKey: PropTypes.string
     },
-    componentDidMount: function() {
+    componentDidMount() {
       if (!isBrowser()) { return true; }
 
       if (!document.getElementById('KakaoJSSDK')) {
-        const scriptKakaoJS = document.createElement("script");
+        const scriptKakaoJS = document.createElement('script');
         scriptKakaoJS.id = 'KakaoJSSDK';
-        scriptKakaoJS.src = "//developers.kakao.com/sdk/js/kakao.min.js";
+        scriptKakaoJS.src = '//developers.kakao.com/sdk/js/kakao.min.js';
         document.body.appendChild(scriptKakaoJS);
       }
 
-      const {jsKey, id, message, pathname} = this.props;
+      const { jsKey, id, message, pathname } = this.props;
       const jsCode = `
         function KaKaoInit() {
           Kakao.cleanup();
