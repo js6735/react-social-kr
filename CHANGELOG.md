@@ -1,3 +1,21 @@
+## react-social-kr
+
+#### 1.1.0 (2017-06-14)
+
+* Refactoring applied eslint.
+* Merge changes from [origin](https://github.com/olahol/react-social) 1.8.0 ~1.9.0.
+
+#### 1.0.3 (2017-02-20)
+
+* Add Korean Social Media buttons. `NaverBlogButton `, `KaKaoStoryButton`, `KaKaoTalkButton`
+
+#### 1.0.0 (2017-02-20)
+
+* Project converted
+
+
+## From [Origin: olahol/react-social](https://github.com/olahol/react-social)
+
 ##### 1.9.0 (2017-04-09)
 
 * Add `title` to `RedditButton` and `LinkedInButton`.
