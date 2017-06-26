@@ -1,6 +1,6 @@
 {
   "name": "react-social-kr",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "React social buttons and counts for Facebook, Pinterest, Google, Naver, KaKao etc ...",
   "main": "lib/react-social.js",
   "peerDependencies": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/olahol/react-social.git"
+    "url": "git+https://github.com/gimdongwoo/react-social-kr.git"
   },
   "keywords": [
     "react",
@@ -35,9 +35,9 @@
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/olahol/react-social/issues"
+    "url": "https://github.com/gimdongwoo/react-social-kr/issues"
   },
-  "homepage": "https://github.com/olahol/react-social",
+  "homepage": "https://github.com/gimdongwoo/react-social-kr",
   "directories": {
     "example": "example"
   },
