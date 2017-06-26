@@ -588,6 +588,7 @@ function factory() {
       }
 
       const { jsKey, id, message, pathname } = this.props;
+      /* eslint-disable */
       const jsCode = `
         function KaKaoInit() {
           Kakao.cleanup();
@@ -596,11 +597,7 @@ function factory() {
           console.log(Kakao);
           Kakao.Link.createTalkLinkButton({
             container: '#` + id + `',
-            image: {
-              src: 'http://dn.api1.kage.kakao.co.kr/14/dn/btqaWmFftyx/tBbQPH764Maw2R6IBhXd6K/o.jpg',
-              width: '300',
-              height: '200'
-            },
+            ` + (this.props.media ? `image: { src: '` + this.props.media + `', width: '300', height: '200' },` : ``) + `
             webButton: {
               text: '` + message + `',
               url: '` + this.props.getLocation(pathname) + `'
@@ -613,6 +610,7 @@ function factory() {
           else { KaKaoInit(); }
         })();
       `;
+      /* eslint-enable */
 
       if (!document.getElementById('KakaoScript')) {
         const scriptKakaoInit = document.createElement('script');
