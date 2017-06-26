@@ -622,6 +622,14 @@ function factory() {
         document.body.appendChild(scriptKakaoInit);
       }
     },
+    componentWillUnmount() {
+      if (document.getElementById('KakaoScript')) {
+        document.body.removeChild(document.getElementById('KakaoScript'));
+      }
+      if (document.getElementById('KakaoJSSDK')) {
+        document.body.removeChild(document.getElementById('KakaoJSSDK'));
+      }
+    },
     mixins: [Button, DefaultBlankTarget],
     constructUrl: function constructUrl() { return null; },
   });
