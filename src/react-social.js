@@ -6,6 +6,9 @@ function factory() {
   const isBrowser = () => {
     return !(typeof document === 'undefined' || typeof window === 'undefined');
   };
+  const isMobile = () => {
+    return (navigator.userAgent.match('CriOS') || navigator.userAgent.match(/mobile/i));
+  };
 
   const getLocation = (pathname) => {
     if (isBrowser()) {
@@ -204,6 +207,8 @@ function factory() {
       }
     },
     render: function render() {
+      if (this.state.isNotRender) return null;
+
       const other = spread(this.props, ['onClick', 'element', 'pathname', 'getLocation', '_open', 'message', 'appId', 'sharer', 'media', 'windowOptions', 'jsKey']);
 
       return React.createElement(
@@ -577,8 +582,11 @@ function factory() {
       id: PropTypes.string,
       jsKey: PropTypes.string
     },
+    componentWillMount() {
+      if (!isMobile()) this.setState({ isNotRender: true });
+    },
     componentDidMount() {
-      if (!isBrowser()) { return true; }
+      if (!isBrowser() || !isMobile()) return true;
 
       if (!document.getElementById('KakaoJSSDK')) {
         const scriptKakaoJS = document.createElement('script');
