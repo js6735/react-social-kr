@@ -139,6 +139,7 @@ Title of your shared content.
 
 - PinterestButton (required)
 - FacebookButton (optional)
+- KaKaoTalkButton
 
 Url of an image.
 

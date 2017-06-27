@@ -584,6 +584,7 @@ function factory() {
       pathname: PropTypes.string,
       getLocation: PropTypes.func,
       message: PropTypes.string,
+      media: PropTypes.string,
       id: PropTypes.string,
       jsKey: PropTypes.string
     },
