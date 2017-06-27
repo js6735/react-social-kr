@@ -197,6 +197,11 @@ function factory() {
         sharer: false
       };
     },
+    getInitialState: function getInitialState() {
+      return {
+        isNotRender: false
+      };
+    },
     click: function click(evt) {
       const url = this.constructUrl();
       const target = this.props.target;
