@@ -95,7 +95,7 @@ Return the social count.
 -  PocketButton
 -  NaverBlogButton
 -  KaKaoStoryButton
--  KaKaoTalkButton
+-  KaKaoTalkButton (only visible on iOS/Android browsers.)
 
 ### Props
 
