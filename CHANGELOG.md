@@ -1,5 +1,13 @@
 ## react-social-kr
 
+#### 1.1.6 (2017-07-04)
+
+* chnage React.PropTypes to PropTypes
+
+#### 1.1.2 (2017-06-26)
+
+* KaKaoTalkButton bug fix
+
 #### 1.1.0 (2017-06-14)
 
 * Refactoring applied eslint.

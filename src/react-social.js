@@ -100,7 +100,7 @@ function factory() {
       element: PropTypes.string,
       pathname: PropTypes.string,
       getLocation: PropTypes.func,
-      token: React.PropTypes.string
+      token: PropTypes.string
     },
     getDefaultProps: function getDefaultProps() {
       return {
@@ -182,7 +182,7 @@ function factory() {
       target: PropTypes.string,
       windowOptions: PropTypes.array,
       _open: PropTypes.bool,
-      sharer: React.PropTypes.bool
+      sharer: PropTypes.bool
     },
     getDefaultProps: function getDefaultProps() {
       return {
@@ -395,7 +395,7 @@ function factory() {
       ]).isRequired,
       pathname: PropTypes.string,
       getLocation: PropTypes.func,
-      sharer: React.PropTypes.bool,
+      sharer: PropTypes.bool,
       message: PropTypes.string
     },
     mixins: [Button, DefaultBlankTarget],
