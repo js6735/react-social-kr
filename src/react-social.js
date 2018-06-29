@@ -6,9 +6,9 @@ function factory() {
   const isBrowser = () => {
     return !(typeof document === 'undefined' || typeof window === 'undefined');
   };
-  const isMobile = () => {
-    return (navigator.userAgent.match('CriOS') || navigator.userAgent.match(/mobile/i));
-  };
+  // const isMobile = () => {
+  //   return (navigator.userAgent.match('CriOS') || navigator.userAgent.match(/mobile/i));
+  // };
 
   const getLocation = (pathname) => {
     if (isBrowser()) {
@@ -588,11 +588,11 @@ function factory() {
       id: PropTypes.string,
       jsKey: PropTypes.string
     },
-    componentWillMount() {
-      if (!isMobile()) this.setState({ isNotRender: true });
-    },
+    // componentWillMount() {
+    //   if (!isMobile()) this.setState({ isNotRender: true });
+    // },
     componentDidMount() {
-      if (!isBrowser() || !isMobile()) return true;
+      // if (!isBrowser() || !isMobile()) return true;
 
       if (!document.getElementById('KakaoJSSDK')) {
         const scriptKakaoJS = document.createElement('script');
@@ -609,14 +609,30 @@ function factory() {
           Kakao.init('` + jsKey + `');
           console.log('Kakao button initial');
           console.log(Kakao);
-          Kakao.Link.createTalkLinkButton({
-            container: '#` + id + `',
-            ` + (this.props.media ? `image: { src: '` + this.props.media + `', width: '300', height: '200' },` : ``) + `
-            webButton: {
+          ` + (this.props.media ? `
+            Kakao.Link.createDefaultButton({
+              container: '#` + id + `',
+              objectType: 'feed',
+              content: {
+                title: '` + message + `',
+                imageUrl: '` + this.props.media + `',
+                link: {
+                  mobileWebUrl: '` + this.props.getLocation(pathname) + `',
+                  webUrl: '` + this.props.getLocation(pathname) + `'
+                }
+              }
+            });
+          ` : `
+            Kakao.Link.createDefaultButton({
+              container: '#` + id + `',
+              objectType: 'text',
               text: '` + message + `',
-              url: '` + this.props.getLocation(pathname) + `'
-            }
-          });
+              link: {
+                mobileWebUrl: '` + this.props.getLocation(pathname) + `',
+                webUrl: '` + this.props.getLocation(pathname) + `'
+              }
+            });
+          `) +`
         }
 
         (function checkKakao() {

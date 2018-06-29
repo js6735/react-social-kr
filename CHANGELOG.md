@@ -1,5 +1,9 @@
 ## react-social-kr
 
+#### 1.1.9 (2018-06-29)
+
+* KaKaoTalkButton api v1 is deprecated, apply v2
+
 #### 1.1.6 (2017-07-04)
 
 * chnage React.PropTypes to PropTypes

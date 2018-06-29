@@ -131,5 +131,17 @@ test("TumblrButton", function (t) {
 });
 
 test("PocketButton", function (t) {
-  t.plan(testButton(t, "TumblrButton"));
+  t.plan(testButton(t, "PocketButton"));
+});
+
+test("NaverBlogButton", function (t) {
+  t.plan(testButton(t, "NaverBlogButton"));
+});
+
+test("KaKaoStoryButton", function (t) {
+  t.plan(testButton(t, "KaKaoStoryButton"));
+});
+
+test("KaKaoTalkButton", function (t) {
+  t.plan(testButton(t, "KaKaoTalkButton"));
 });
