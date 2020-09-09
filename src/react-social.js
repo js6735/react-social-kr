@@ -591,9 +591,18 @@ function factory() {
     // componentWillMount() {
     //   if (!isMobile()) this.setState({ isNotRender: true });
     // },
-    componentDidMount() {
+     componentDidMount: function componentDidMount() {
       // if (!isBrowser() || !isMobile()) return true;
-
+    },
+    
+    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+      if (document.getElementById('KakaoScript')) {
+        document.body.removeChild(document.getElementById('KakaoScript'));
+      }
+      if (document.getElementById('KakaoJSSDK')) {
+        document.body.removeChild(document.getElementById('KakaoJSSDK'));
+      }
+      
       if (!document.getElementById('KakaoJSSDK')) {
         const scriptKakaoJS = document.createElement('script');
         scriptKakaoJS.id = 'KakaoJSSDK';
@@ -641,14 +650,11 @@ function factory() {
         })();
       `;
       /* eslint-enable */
-
-      if (!document.getElementById('KakaoScript')) {
         const scriptKakaoInit = document.createElement('script');
         scriptKakaoInit.id = 'KakaoScript';
         scriptKakaoInit.setAttribute('type', 'text/javascript');
         scriptKakaoInit.text = jsCode;
         document.body.appendChild(scriptKakaoInit);
-      }
     },
     componentWillUnmount() {
       if (document.getElementById('KakaoScript')) {
